@@ -3,12 +3,16 @@ const cors = require('cors');
 require('dotenv').config();
 
 const productRoutes = require('./routes/products'); // Import product routes
+const authRoutes = require('./routes/auth'); //Import auth routes
 
 const app = express();
 
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+// Register auth routes
+app.use('/auth', authRoutes)
 
 // Register product routes
 app.use('/products', productRoutes);
